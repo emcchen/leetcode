@@ -47,3 +47,16 @@ class Solution:
             s[(i+1) * -1] = current_number
 
 ##########################################################################################
+#Palindrome Number
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        string = str(x)
+        string_reversed = string[::-1]
+        
+        if x < 0:
+            return False
+        else:
+            if string == string_reversed:
+                return True
+
+##########################################################################################
