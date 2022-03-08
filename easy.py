@@ -60,3 +60,26 @@ class Solution:
                 return True
 
 ##########################################################################################
+#Binary Search on practice.geeksforgeeks.org
+#Check if we looked through all numbers in array.. If so return -1
+
+class Solution:
+    def binarysearch(self, arr, n, k):
+        low = 0
+        high = n - 1
+        mid = 0
+
+        while low <= high:
+            middle = (low + high) // 2
+            
+            if arr[middle] < k:
+                low = middle + 1
+            elif arr[middle] > k:
+                high = middle - 1
+            else:
+                return middle
+        return -1
+    
+    # Time complexity log(n)
+    # Space complexity O(1)
+                
