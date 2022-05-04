@@ -82,4 +82,50 @@ class Solution:
     
     # Time complexity log(n)
     # Space complexity O(1)
-                
+
+##########################################################################################
+#Valid Parenthesis
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        
+        brackets = {'(':')', '{':'}', '[':']'}
+        
+        for character in s:
+            if character in brackets:
+                stack.append(brackets[character])
+            elif stack and stack[-1] == character:
+                stack.pop()
+            else:
+                return False
+        return len(stack) == 0
+
+##########################################################################################
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+#loop until there is no more linkedlist
+#identify the head as the current node
+#Set previous node as None
+#set variable as current's next and reverse it
+#update previous and current
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        current = head
+        previous = None
+        
+        while current is not None:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        return previous
+
+    Time complexity O(n), Space complexity O(1)
+
+##########################################################################################
