@@ -126,6 +126,45 @@ class Solution:
             current = next
         return previous
 
-    Time complexity O(n), Space complexity O(1)
+    # Time complexity O(n), Space complexity O(1)
+
+
+##########################################################################################
+# Range Sum of BST
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# Start at root node
+# Check if it has a left and/or right child. Put it into queue
+# If node value if in range, update the sum variable.
+# Pop off the first in queue to check it
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        queue = [root]
+        result = 0
+        
+        while queue:
+            node = queue.pop(0)
+            if node.val >= low and node.val <= high:
+                result += node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            elif node.val < low:
+                if node.right:
+                    queue.append(node.right)
+            elif node.val > high:
+                if node.left:
+                    queue.append(node.left)
+        
+        return result
+
+    #Time complexity = O(n)
 
 ##########################################################################################
